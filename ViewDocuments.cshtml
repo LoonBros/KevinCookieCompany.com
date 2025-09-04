@@ -1,0 +1,24 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "View Documents";
+}
+
+<h2>Uploaded Documents</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No documents found for this claim.</p>
+}
+else
+{
+    <ul>
+        @foreach (var fileName in Model)
+        {
+            <li>
+                <a href="@Url.Content("~/uploads/" + fileName)" target="_blank">@fileName</a>
+            </li>
+        }
+    </ul>
+}
+<a asp-action="Claims" class="btn btn-secondary">Back to Claims</a>
